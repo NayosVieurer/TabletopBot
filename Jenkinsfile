@@ -25,9 +25,9 @@ pipeline {
             steps {
                 echo 'Branche main validée. Déploiement en cours sur le Kimsufi...'
                 sh 'dotnet publish --configuration Release --output ./publish --no-build'
-                # Copie les fichiers vers le dossier de prod
+
                 sh 'cp -R ./publish/* /var/www/tabletobclubbot/'
-                # Redémarre le service grâce aux droits sudo configurés précédemment
+
                 sh 'sudo systemctl restart tabletobclubbot.service'
             }
         }
