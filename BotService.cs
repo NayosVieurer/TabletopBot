@@ -133,29 +133,29 @@ namespace TabletobClubBot
                     });
                 }
 
-                if(chan.BotOnly)
-                {
-                    var messages =  channel.GetMessagesAsync();
+                //if(chan.BotOnly)
+                //{
+                //    var messages =  channel.GetMessagesAsync();
 
-                    var count = await messages.CountAsync();
+                //    var count = await messages.CountAsync();
 
-                    var message = await messages.FirstOrDefaultAsync();
+                //    var message = await messages.FirstOrDefaultAsync();
 
 
-                    if (message.Count == 0)
-                    {
-                        var button = new ButtonBuilder()
-                            .WithLabel("Créer un JDR")
-                            .WithCustomId("btn_open_modal") // ID unique pour intercepter le clic
-                            .WithStyle(ButtonStyle.Primary) // Couleur bleue
-                            .WithEmote(new Emoji("➕"));
+                //    if (message.Count == 0)
+                //    {
+                //        var button = new ButtonBuilder()
+                //            .WithLabel("Créer un JDR")
+                //            .WithCustomId("btn_open_modal") // ID unique pour intercepter le clic
+                //            .WithStyle(ButtonStyle.Primary) // Couleur bleue
+                //            .WithEmote(new Emoji("➕"));
 
-                        var components = new ComponentBuilder().WithButton(button).Build();
+                //        var components = new ComponentBuilder().WithButton(button).Build();
 
-                        await channel.SendMessageAsync("Cliquez sur le bouton ci-dessous pour ajouter un jeu :", components: components);
+                //        await channel.SendMessageAsync("Cliquez sur le bouton ci-dessous pour ajouter un jeu :", components: components);
 
-                    }
-                }
+                //    }
+                //}
             }
         }
     }
