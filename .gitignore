@@ -1,0 +1,7 @@
+DiscordSettings.json
+appsettings.Development.json
+/DiscordSettings.Development.json
+/DiscordSettings.Development.json
+bin/
+obj/
+*.csproj.user

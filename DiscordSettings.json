@@ -1,0 +1,108 @@
+{
+  "Discord": {
+    "Token": "",
+    "GuildID": 0
+  },
+  "HQConfigs": [
+    {
+      "CategoryName": "Wargames HQ",
+      "AccessRoleID": 0,
+      "IsCommon": false,
+      "Channels": [
+        {
+          "Name": "General",
+          "ChannelType": "Text",
+          "BotOnly": false
+        },
+        {
+          "Name": "Announcements",
+          "ChannelType": "Text",
+          "BotOnly": false
+        },
+        {
+          "Name": "Resources",
+          "ChannelType": "Text",
+          "BotOnly": false
+        }
+      ]
+    },
+    {
+      "CategoryName": "TTRPG HQ",
+      "AccessRoleID": 0,
+      "IsCommon": false,
+      "Channels": [
+        {
+          "Name": "General",
+          "ChannelType": "Text",
+          "BotOnly": false
+        },
+        {
+          "Name": "Announcements",
+          "ChannelType": "Text",
+          "BotOnly": false
+        },
+        {
+          "Name": "Resources",
+          "ChannelType": "Text",
+          "BotOnly": false
+        }
+      ]
+    },
+    {
+      "CategoryName": "Boardgame HQ",
+      "AccessRoleID": 0,
+      "IsCommon": false,
+      "Channels": [
+        {
+          "Name": "General",
+          "ChannelType": "Text",
+          "BotOnly": false
+        },
+        {
+          "Name": "Announcements",
+          "ChannelType": "Text",
+          "BotOnly": false
+        },
+        {
+          "Name": "Resources",
+          "ChannelType": "Text",
+          "BotOnly": false
+        }
+      ]
+    },
+    {
+      "CategoryName": "General",
+      "AccessRoleID": 0,
+      "IsCommon": true,
+      "Channels": [
+        {
+          "Name": "Chat",
+          "ChannelType": "Text",
+          "BotOnly": false
+        },
+        {
+          "Name": "Announcements",
+          "ChannelType": "Text",
+          "BotOnly": false
+        },
+        {
+          "Name": "Images",
+          "ChannelType": "Text",
+          "BotOnly": false
+        }
+      ]
+    },
+    {
+      "CategoryName": "Admin",
+      "AccessRoleID": 0,
+      "IsCommon": true,
+      "Channels": [
+        {
+          "Name": "Chat",
+          "ChannelType": "Text",
+          "BotOnly": false
+        }
+      ]
+    }
+  ]
+}
