@@ -8,8 +8,11 @@ pipeline {
     stages {
         stage('Restauration & Build') {
             steps {
-                // Syntaxe exacte pour le GitHub Integration Plugin
-                gitHubStatusNotify(status: 'PENDING', context: 'continuous-integration/jenkins', description: 'Restauration et compilation .NET 8...')
+                // Notifie GitHub universellement du début du build
+                step([$class: 'GitHubCommitStatusSetter', 
+                      contextSource: [$class: 'ManuallyEnteredCommitStatusContextSource', context: 'continuous-integration/jenkins'],
+                      statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', state: 'PENDING', message: 'Restauration et compilation .NET 8...']]]
+                ])
                 
                 echo 'Téléchargement des paquets et compilation...'
                 sh 'dotnet restore'
@@ -25,6 +28,7 @@ pipeline {
         }
 
         stage('Déploiement en Production') {
+            // SÉCURITÉ : Jenkins n'exécute cette étape QUE si le code est sur la branche 'main'
             when {
                 branch 'main'
             }
@@ -41,10 +45,18 @@ pipeline {
 
     post {
         success {
-            gitHubStatusNotify(status: 'SUCCESS', context: 'continuous-integration/jenkins', description: 'Le build et les tests sont validés ! ✅')
+            // Débloque le bouton de fusion (Merge) sur GitHub
+            step([$class: 'GitHubCommitStatusSetter', 
+                  contextSource: [$class: 'ManuallyEnteredCommitStatusContextSource', context: 'continuous-integration/jenkins'],
+                  statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', state: 'SUCCESS', message: 'Le build et les tests sont validés ! ✅']]]
+            ])
         }
         failure {
-            gitHubStatusNotify(status: 'FAILURE', context: 'continuous-integration/jenkins', description: 'Échec de la compilation ou des tests. ❌')
+            // Laisse le bouton de fusion bloqué si le build ou les tests échouent
+            step([$class: 'GitHubCommitStatusSetter', 
+                  contextSource: [$class: 'ManuallyEnteredCommitStatusContextSource', context: 'continuous-integration/jenkins'],
+                  statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', state: 'FAILURE', message: 'Échec de la compilation ou des tests. ❌']]]
+            ])
         }
     }
 }
