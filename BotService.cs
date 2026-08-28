@@ -133,8 +133,8 @@ namespace TabletobClubBot
                     });
                 }
 
-                //if(chan.BotOnly)
-                //{
+                if(chan.BotOnly)
+                {
                 //    var messages =  channel.GetMessagesAsync();
 
                 //    var count = await messages.CountAsync();
@@ -155,7 +155,7 @@ namespace TabletobClubBot
                 //        await channel.SendMessageAsync("Cliquez sur le bouton ci-dessous pour ajouter un jeu :", components: components);
 
                 //    }
-                //}
+                }
             }
         }
     }
