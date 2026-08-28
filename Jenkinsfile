@@ -10,7 +10,7 @@ pipeline {
             steps {
                 // Notifie GitHub universellement du début du build
                 step([$class: 'GitHubCommitStatusSetter', 
-                      contextSource: [$class: 'ManuallyEnteredCommitStatusContextSource', context: 'continuous-integration/jenkins'],
+                      contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'continuous-integration/jenkins'],
                       statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', state: 'PENDING', message: 'Restauration et compilation .NET 8...']]]
                 ])
                 
