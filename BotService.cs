@@ -154,7 +154,7 @@ namespace TabletobClubBot
 
                 //        await channel.SendMessageAsync("Cliquez sur le bouton ci-dessous pour ajouter un jeu :", components: components);
 
-                //    }
+                    }
                 }
             }
         }
