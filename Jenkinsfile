@@ -47,14 +47,14 @@ pipeline {
         success {
             // Débloque le bouton de fusion (Merge) sur GitHub
             step([$class: 'GitHubCommitStatusSetter', 
-                  contextSource: [$class: 'ManuallyEnteredCommitStatusContextSource', context: 'continuous-integration/jenkins'],
+                  contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'continuous-integration/jenkins'],
                   statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', state: 'SUCCESS', message: 'Le build et les tests sont validés ! ✅']]]
             ])
         }
         failure {
             // Laisse le bouton de fusion bloqué si le build ou les tests échouent
             step([$class: 'GitHubCommitStatusSetter', 
-                  contextSource: [$class: 'ManuallyEnteredCommitStatusContextSource', context: 'continuous-integration/jenkins'],
+                  contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'continuous-integration/jenkins'],
                   statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', state: 'FAILURE', message: 'Échec de la compilation ou des tests. ❌']]]
             ])
         }
