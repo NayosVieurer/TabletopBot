@@ -133,9 +133,9 @@ namespace TabletobClubBot
                     });
                 }
 
-                if (chan.BotOnly)
+                if(chan.BotOnly)
                 {
-                    var messages = channel.GetMessagesAsync();
+                    var messages =  channel.GetMessagesAsync();
 
                     var count = await messages.CountAsync();
 
